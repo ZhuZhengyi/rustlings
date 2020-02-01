@@ -24,7 +24,17 @@ pub struct NotDivisibleError {
 // This function should calculate `a` divided by `b` if `a` is
 // evenly divisible by b.
 // Otherwise, it should return a suitable error.
-pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {}
+pub fn divide(a: i32, b: i32) -> Result<i32, DivisionError> {
+    if b == 0 {
+        return Err(DivisionError::DivideByZero);
+    } else if a == 0 {
+        return Ok(0);
+    } else if a % b != 0 {
+        return Err(DivisionError::NotDivisible(NotDivisibleError{dividend: a, divisor: b}));
+    } else {
+        return Ok(a/b);
+    }
+}
 
 #[cfg(test)]
 mod tests {

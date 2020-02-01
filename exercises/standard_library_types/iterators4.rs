@@ -12,6 +12,12 @@ pub fn factorial(num: u64) -> u64 {
     // For the most fun don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+    
+    match num {
+        0 => 0,
+        1 => 1,
+        _ => (num) * factorial(num-1),
+    }
 }
 
 #[cfg(test)]
